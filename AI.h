@@ -17,6 +17,12 @@ class AI
 {
 public:
 	void doTurn(World *world);
+
+
+private:
+    int start = 0;
+    int myID;
+    int enemyID;
 };
 
 #endif // _AI_H
