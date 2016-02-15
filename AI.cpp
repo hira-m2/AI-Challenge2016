@@ -25,7 +25,7 @@ void AI::doTurn(World *world)
 	{
 		/** Get neighbours **/
 		const std::vector<Node*>& neighbours = source->getNeighbours();
-        neighbStatus = 0;
+        neighbStatus = 3;
 		if (neighbours.size() > 0)
 		{
             for(auto& ni : neighbours)
@@ -39,7 +39,7 @@ void AI::doTurn(World *world)
                 else if ( ni->getOwner() == -1)
                     neighbStatus = 2;
             }
-            if(neighbStatus == 0)
+            if(neighbStatus == 3)
                 myNeighbours.push_back(temp);
             else if (neighbStatus == 1)
                 enemyNeighbours.push_back(temp);
