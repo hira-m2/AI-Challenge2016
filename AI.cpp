@@ -16,7 +16,7 @@ void AI::doTurn(World *world)
         ++start;
     }
     int neighbStatus;
-    Node *temp;
+//    Node *temp;
     std::vector<Node*> freeNeighbours;
     std::vector<Node*> myNeighbours;
     std::vector<Node*> enemyNeighbours;
@@ -30,7 +30,6 @@ void AI::doTurn(World *world)
 		{
             for(auto& ni : neighbours)
             {
-                temp = ni;
                 if(ni->getOwner() == this->enemyID)
                 {
                     neighbStatus = 1;
@@ -40,11 +39,20 @@ void AI::doTurn(World *world)
                     neighbStatus = 2;
             }
             if(neighbStatus == 3)
-                myNeighbours.push_back(temp);
+                myNeighbours.push_back(source);
             else if (neighbStatus == 1)
-                enemyNeighbours.push_back(temp);
+                enemyNeighbours.push_back(source);
             else
-                freeNeighbours.push_back(temp);
+                freeNeighbours.push_back(source);
 		}
 	}
+
+    if( (world->getFreeNodes().size() / static_cast<double>(world->getFreeNodes().size() + world->getMyNodes().size() + world->getOpponentNodes().size())) > 0.5 )
+    {
+        //Fast phase
+    }
+    else
+    {
+        //Normal phase
+    }
 }
